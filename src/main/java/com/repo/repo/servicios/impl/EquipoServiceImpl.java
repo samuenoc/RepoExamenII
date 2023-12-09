@@ -29,13 +29,10 @@ public class EquipoServiceImpl implements EquipoService {
         if (posicion != null) {
             throw new RuntimeException("No se puede eliminar el equipo. Tiene un registro en la tabla de posiciones.");
         }
-        
+        // Si no hay un registro en la tabla de posiciones, eliminar el equipo
+        equipoRepository.deleteById(codigoEquipo);
     }
-    public class EquipoConPosicionException extends RuntimeException {
-        public EquipoConPosicionException(String mensaje) {
-            super(mensaje);
-        }
-    }
+    
     @Override
     public Equipo buscarEquipo(int codigoEquipo) {
         return this.equipoRepository.findById(codigoEquipo).get();

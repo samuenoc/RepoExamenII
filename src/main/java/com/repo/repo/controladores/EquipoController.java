@@ -33,7 +33,8 @@ public class EquipoController {
     }
 
     @DeleteMapping("/eliminar/{codigoEquipo}")
-    public void eliminarEquipo(@PathVariable(name = "codigoEquipo")int codigoEquipo){
+    public String eliminarEquipo(@PathVariable int codigoEquipo){
          this.equipoServiceImpl.eliminarEquipo(codigoEquipo);
+         return "Equipo eliminado con éxito";
     }
 }
