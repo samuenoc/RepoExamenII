@@ -1,5 +1,7 @@
 package com.repo.repo.controladores;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +18,10 @@ public class PosicionController {
     @Autowired
     PosicionServiceImpl posicionServiceImpl;
 
-    @GetMapping("/buscar/{codigoEquipo}")
-    public Posicion buscarEquipo(@PathVariable(name = "codigoEquipo")int codigoEquipo){
-        return this.posicionServiceImpl.obtenerTablaPosicion(codigoEquipo);
+    @GetMapping("/todos")
+    public List<Posicion> obtenerTablaPosicion(){
+    
+        return this.posicionServiceImpl.obtenerTablaPosicion();
+
     }
 }
