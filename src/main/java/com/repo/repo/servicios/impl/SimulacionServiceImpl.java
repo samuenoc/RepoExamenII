@@ -26,12 +26,10 @@ public class SimulacionServiceImpl implements SimulacionService {
           List<Equipo> equipos = equipoRepository.findAll();
 
         if (equipos.size() < 6) {
-            // Crear al menos 6 equipos si no existen
-            // Aquí debes implementar la lógica para crear equipos de forma aleatoria o según tus necesidades
-            // Puedes usar equipoRepository.save(new Equipo(...)) para guardar nuevos equipos
+           
         }
 
-        // Simular partidos
+
         for (Equipo equipoA : equipos) {
             for (Equipo equipoB : equipos) {
                 if (!equipoA.equals(equipoB)) {
@@ -43,28 +41,28 @@ public class SimulacionServiceImpl implements SimulacionService {
         private void simularEncuentro(Equipo equipoA, Equipo equipoB) {
         Random random = new Random();
 
-        int golesEquipoA = random.nextInt(4); // Número aleatorio de goles para equipoA (0-3)
-        int golesEquipoB = random.nextInt(4); // Número aleatorio de goles para equipoB (0-3)
+        int golesEquipoA = random.nextInt(4); 
+        int golesEquipoB = random.nextInt(4); 
 
         int puntosEquipoA, puntosEquipoB;
 
         if (golesEquipoA == golesEquipoB) {
-            // Empate
+           
             puntosEquipoA = puntosEquipoB = 1;
         } else if (golesEquipoA > golesEquipoB) {
-            // EquipoA gana
+          
             puntosEquipoA = 3;
             puntosEquipoB = 0;
         } else {
-            // EquipoB gana
+           
             puntosEquipoA = 0;
             puntosEquipoB = 3;
         }
 
-        // Actualizar estadísticas de Posiciones para EquipoA
+     
         actualizarPosicion(equipoA, golesEquipoA, golesEquipoB, puntosEquipoA);
 
-        // Actualizar estadísticas de Posiciones para EquipoB
+      
         actualizarPosicion(equipoB, golesEquipoB, golesEquipoA, puntosEquipoB);
         
     }
